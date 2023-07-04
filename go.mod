@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/PuerkitoBio/goquery v1.7.0
 	github.com/gofiber/fiber/v2 v2.13.0
-	github.com/gofiber/template v1.6.12
 	github.com/golang/mock v1.3.1
 	github.com/golangci/golangci-lint v1.28.3
 	github.com/google/uuid v1.0.0
