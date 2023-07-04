@@ -6,7 +6,7 @@ require (
 	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/gofiber/fiber/v2 v2.13.0
 	github.com/gofiber/template/html/v2 v2.0.4
-	github.com/golang/mock v1.4.4
+	github.com/golang/mock v1.6.0
 	github.com/golangci/golangci-lint v1.53.3
 	github.com/google/uuid v1.3.0
 	github.com/valyala/fasthttp v1.48.0
