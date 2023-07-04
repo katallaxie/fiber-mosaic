@@ -5,14 +5,9 @@ go 1.20
 require (
 	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/gofiber/fiber/v2 v2.13.0
-<<<<<<< HEAD
+	github.com/gofiber/template/html/v2 v2.0.4
 	github.com/golang/mock v1.4.4
 	github.com/golangci/golangci-lint v1.53.3
-=======
-	github.com/gofiber/template/html/v2 v2.0.4
-	github.com/golang/mock v1.3.1
-	github.com/golangci/golangci-lint v1.28.3
->>>>>>> 663c020 (fix: change html template package)
 	github.com/google/uuid v1.3.0
 	github.com/valyala/fasthttp v1.48.0
 	golang.org/x/net v0.10.0
@@ -70,15 +65,10 @@ require (
 	github.com/go-toolsmith/typep v1.1.0 // indirect
 	github.com/go-xmlfmt/xmlfmt v1.1.2 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
-<<<<<<< HEAD
-	github.com/gofrs/flock v0.8.1 // indirect
-	github.com/golang/protobuf v1.5.2 // indirect
-=======
 	github.com/gofiber/template v1.8.2 // indirect
 	github.com/gofiber/utils v1.1.0 // indirect
-	github.com/gofrs/flock v0.7.1 // indirect
-	github.com/gogo/protobuf v1.2.1 // indirect
->>>>>>> 663c020 (fix: change html template package)
+	github.com/gofrs/flock v0.8.1 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golangci/check v0.0.0-20180506172741-cfe4005ccda2 // indirect
 	github.com/golangci/dupl v0.0.0-20180902072040-3e9179ac440a // indirect
 	github.com/golangci/go-misc v0.0.0-20220329215616-d24fe342adfe // indirect
