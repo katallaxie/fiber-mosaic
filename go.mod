@@ -7,7 +7,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.13.0
 	github.com/golang/mock v1.3.1
 	github.com/golangci/golangci-lint v1.28.3
-	github.com/google/uuid v1.0.0
+	github.com/google/uuid v1.3.0
 	github.com/valyala/fasthttp v1.26.0
 	golang.org/x/net v0.7.0
 	mvdan.cc/gofumpt v0.0.0-20200513141252-abc0db2c416a
