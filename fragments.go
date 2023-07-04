@@ -51,7 +51,7 @@ type Config struct {
 	DefaultHost string
 }
 
-// Template ...
+// Template is a middleware for templating.
 // nolint:gocyclo
 func Template(config Config, name string, bind interface{}, layouts ...string) fiber.Handler {
 	// Set default config

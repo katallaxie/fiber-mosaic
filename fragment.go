@@ -201,11 +201,7 @@ func (f *Fragment) HtmlFragment() *HtmlFragment {
 func (f *Fragment) Resolve() ResolverFunc {
 	return func(c *fiber.Ctx, cfg Config) error {
 		err := f.do(c, cfg, f.src)
-		if err != nil {
-			return err
-		}
-
-		if errors.Is(err, fasthttp.ErrTimeout) {
+		if !errors.Is(err, fasthttp.ErrTimeout) {
 			return err
 		}
 
