@@ -8,7 +8,7 @@ require (
 	github.com/golang/mock v1.4.4
 	github.com/golangci/golangci-lint v1.53.3
 	github.com/google/uuid v1.3.0
-	github.com/valyala/fasthttp v1.26.0
+	github.com/valyala/fasthttp v1.48.0
 	golang.org/x/net v0.10.0
 	mvdan.cc/gofumpt v0.5.0
 )
@@ -28,7 +28,7 @@ require (
 	github.com/alexkohler/nakedret/v2 v2.0.2 // indirect
 	github.com/alexkohler/prealloc v1.0.0 // indirect
 	github.com/alingse/asasalint v0.0.11 // indirect
-	github.com/andybalholm/brotli v1.0.2 // indirect
+	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/ashanbrown/forbidigo v1.5.3 // indirect
 	github.com/ashanbrown/makezero v1.1.1 // indirect
@@ -94,7 +94,7 @@ require (
 	github.com/kisielk/errcheck v1.6.3 // indirect
 	github.com/kisielk/gotool v1.0.0 // indirect
 	github.com/kkHAIKE/contextcheck v1.1.4 // indirect
-	github.com/klauspost/compress v1.12.2 // indirect
+	github.com/klauspost/compress v1.16.3 // indirect
 	github.com/kulti/thelper v0.6.3 // indirect
 	github.com/kunwardeep/paralleltest v1.0.7 // indirect
 	github.com/kyoh86/exportloopref v0.1.11 // indirect
