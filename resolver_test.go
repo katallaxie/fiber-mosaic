@@ -8,7 +8,7 @@ import (
 )
 
 func TestNewResolver(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		desc string
 	}{}
 

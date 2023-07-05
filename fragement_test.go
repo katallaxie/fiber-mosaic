@@ -10,7 +10,7 @@ import (
 )
 
 func TestNewHtmlFragment(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		desc string
 		root *html.Node
 	}{
