@@ -2,7 +2,11 @@ package fragments
 
 import (
 	"bytes"
+	"context"
 	"errors"
+	"io"
+	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"sync"
@@ -11,9 +15,13 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
-	"github.com/valyala/fasthttp"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
+)
+
+const (
+	// HTTPLinkHeader is the HTTP header for LINK entities.
+	HTTPLinkHeader = "Link"
 )
 
 // HtmlFragment is representation of HTML fragments.
@@ -201,7 +209,7 @@ func (f *Fragment) HtmlFragment() *HtmlFragment {
 func (f *Fragment) Resolve() ResolverFunc {
 	return func(c *fiber.Ctx, cfg Config) error {
 		err := f.do(c, cfg, f.src)
-		if !errors.Is(err, fasthttp.ErrTimeout) {
+		if !errors.Is(err, context.DeadlineExceeded) {
 			return err
 		}
 
@@ -215,34 +223,39 @@ func (f *Fragment) Resolve() ResolverFunc {
 }
 
 func (f *Fragment) do(c *fiber.Ctx, cfg Config, src string) error {
-	req := fasthttp.AcquireRequest()
-	res := fasthttp.AcquireResponse()
-
-	defer fasthttp.ReleaseRequest(req)
-	defer fasthttp.ReleaseResponse(res)
-
-	c.Request().CopyTo(req)
-
-	uri := fasthttp.AcquireURI()
-	defer fasthttp.ReleaseURI(uri)
-
-	if err := uri.Parse(nil, []byte(src)); err != nil {
+	u, err := url.Parse(src)
+	if err != nil {
 		return err
 	}
 
-	if len(uri.Host()) == 0 {
-		uri.SetHost(cfg.DefaultHost)
+	if len(u.Scheme) == 0 {
+		u.Scheme = "http"
 	}
-	req.SetRequestURI(uri.String())
-	req.Header.Del(fiber.HeaderConnection)
 
-	t := f.Timeout()
-	if err := client.DoTimeout(req, res, t); err != nil {
+	if len(u.Host) == 0 {
+		u.Host = cfg.DefaultHost
+	}
+
+	ctx, cancel := context.WithTimeout(c.Context(), f.Timeout())
+	defer cancel()
+
+	req, err := http.NewRequestWithContext(ctx, "GET", u.String(), nil)
+	if err != nil {
 		return err
 	}
 
-	res = cfg.FilterResponse(res)
-	f.statusCode = res.StatusCode()
+	res, err := DefaultClient.Do(req)
+	if err != nil {
+		return err
+	}
+	defer res.Body.Close()
+
+	f.statusCode = res.StatusCode
+
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		return err
+	}
 
 	// if res.StatusCode() != http.StatusOK {
 	// 	// TODO: wrap in custom error, to not replace
@@ -251,18 +264,7 @@ func (f *Fragment) do(c *fiber.Ctx, cfg Config, src string) error {
 
 	res.Header.Del(fiber.HeaderConnection)
 
-	contentEncoding := res.Header.Peek("Content-Encoding")
-	body := res.Body()
-
-	var err error
-	if bytes.EqualFold(contentEncoding, []byte("gzip")) {
-		body, err = res.BodyGunzip()
-		if err != nil {
-			return cfg.ErrorHandler(c, err)
-		}
-	}
-
-	h := Header(string(res.Header.Peek("link")))
+	h := Header(res.Header.Get(HTTPLinkHeader))
 	nodes := CreateNodes(h.Links())
 	f.head = append(f.head, nodes...)
 

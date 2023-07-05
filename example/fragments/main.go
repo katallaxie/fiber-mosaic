@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/template/html/v2"
 )
 
@@ -15,6 +16,8 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
+
+	app.Use(compress.New())
 
 	app.Get("/fragment1", func(c *fiber.Ctx) error {
 		c.Links("https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", "stylesheet")

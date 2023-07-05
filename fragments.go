@@ -8,18 +8,18 @@ import (
 	"bytes"
 	"html/template"
 	"io"
+	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/valyala/fasthttp"
 	"golang.org/x/net/html"
 )
 
-var client = fasthttp.Client{
-	NoDefaultUserAgentHeader: true,
-	DisablePathNormalizing:   true,
-	ReadBufferSize:           2 * 4096,
+var DefaultClient = &http.Client{
+	Timeout: 10 * time.Second,
 }
 
 // Config ...
