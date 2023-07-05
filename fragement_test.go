@@ -9,7 +9,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-func TestNewDocument(t *testing.T) {
+func TestNewHtmlFragment(t *testing.T) {
 	var tests = []struct {
 		desc string
 		root *html.Node
@@ -26,7 +26,7 @@ func TestNewDocument(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.desc, func(t *testing.T) {
-			doc, err := fragments.NewDocument(test.root)
+			doc, err := fragments.NewHtmlFragment(test.root)
 			assert.NoError(t, err)
 			assert.NotNil(t, doc)
 		})
