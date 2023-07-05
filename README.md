@@ -1,4 +1,4 @@
-# Fragments
+# 🖼️ Mosaic
 
 [![main](https://github.com/katallaxie/fiber-mosaic/actions/workflows/main.yaml/badge.svg)](https://github.com/katallaxie/fiber-mosaic/actions/workflows/main.yaml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/katallaxie/fiber-mosaic)](https://goreportcard.com/report/github.com/katallaxie/fiber-mosaic)
