@@ -257,11 +257,6 @@ func (f *Fragment) do(c *fiber.Ctx, cfg Config, src string) error {
 		return err
 	}
 
-	// if res.StatusCode() != http.StatusOK {
-	// 	// TODO: wrap in custom error, to not replace
-	// 	return fmt.Errorf("resolve: could not resolve fragment at %s", f.Src())
-	// }
-
 	res.Header.Del(fiber.HeaderConnection)
 
 	h := Header(res.Header.Get(HTTPLinkHeader))

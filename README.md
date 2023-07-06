@@ -84,24 +84,15 @@ This is run on a MacBook Pro 16 inch locally. It is the `example` run.
 * Inlining results and adding `Link` header resources to the output
 
 ```bash
-echo "GET http://127.0.0.1:8080/index" | vegeta attack -duration=5s -rate 2000 | tee results.bin | vegeta report
-  vegeta report -type=json results.bin > metrics.json
-  cat results.bin | vegeta plot > plot.html
-  cat results.bin | vegeta report -type="hist[0,100ms,200ms,300ms]"
-
-Requests      [total, rate, throughput]         10000, 2000.26, 2000.15
-Duration      [total, attack, wait]             5s, 4.999s, 285.172µs
-Latencies     [min, mean, 50, 90, 95, 99, max]  183.725µs, 251.517µs, 226.993µs, 310.698µs, 394.601µs, 563.022µs, 1.347ms
-Bytes In      [total, mean]                     6240000, 624.00
+echo "GET http://127.0.0.1:8080/index" | vegeta attack -duration=5s -rate 2000 | tee results.bin | vegeta report 
+Requests      [total, rate, throughput]         10000, 2000.22, 1999.86
+Duration      [total, attack, wait]             5s, 4.999s, 898.542µs
+Latencies     [min, mean, 50, 90, 95, 99, max]  278.625µs, 1.549ms, 805.833µs, 1.591ms, 7.847ms, 16.35ms, 23.643ms
+Bytes In      [total, mean]                     10130000, 1013.00
 Bytes Out     [total, mean]                     0, 0.00
 Success       [ratio]                           100.00%
-Status Codes  [code:count]                      200:10000
+Status Codes  [code:count]                      200:10000  
 Error Set:
-Bucket           #      %        Histogram
-[0s,     100ms]  10000  100.00%  ###########################################################################
-[100ms,  200ms]  0      0.00%
-[200ms,  300ms]  0      0.00%
-[300ms,  +Inf]   0      0.00%
 ```
 
 ## License

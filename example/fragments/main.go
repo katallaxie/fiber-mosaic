@@ -1,8 +1,6 @@
 package main
 
 import (
-	"time"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -43,13 +41,7 @@ func main() {
 	})
 
 	app.Get("/fragment3", func(c *fiber.Ctx) error {
-		timer1 := time.NewTimer(90 * time.Second)
-
-		<-timer1.C // wait here for fallback
-
-		return c.Render("fragment3", fiber.Map{
-			"Title": "Example 3",
-		})
+		return c.Send(nil)
 	})
 
 	app.Get("/fragment4", func(c *fiber.Ctx) error {
