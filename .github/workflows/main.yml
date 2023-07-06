@@ -3,6 +3,7 @@
 name: Test & Build
 
 on:
+  workflow_call:
   push:
     branches:
     - main
