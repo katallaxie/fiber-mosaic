@@ -11,16 +11,14 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/valyala/fasthttp"
 	"golang.org/x/net/html"
 )
 
-var DefaultClient = &http.Client{
-	Timeout: 10 * time.Second,
-}
+// DefaultClient is the default http client used
+var DefaultClient = NewClient()
 
 // Config ...
 type Config struct {
@@ -49,6 +47,11 @@ type Config struct {
 	// if no host is set on a fragment.
 	// Optional. Default: localhost:3000
 	DefaultHost string
+
+	// Client defines the http client to use for
+	// fetching the fragments.
+	// Optional. Default: DefaultClient
+	Client *http.Client
 }
 
 // Template is a middleware for templating.
@@ -182,6 +185,10 @@ func configDefault(config ...Config) Config {
 		cfg.FilterHead = func(nodes []*html.Node) []*html.Node {
 			return nodes
 		}
+	}
+
+	if cfg.Client == nil {
+		cfg.Client = DefaultClient
 	}
 
 	return cfg
