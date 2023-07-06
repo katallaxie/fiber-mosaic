@@ -9,4 +9,6 @@ on:
 
 jobs:
   test:
+    permissions:
+      checks: write
     uses: ./.github/workflows/main.yml
