@@ -9,8 +9,9 @@ require (
 	github.com/golang/mock v1.6.0
 	github.com/golangci/golangci-lint v1.53.3
 	github.com/google/uuid v1.3.0
+	github.com/stretchr/testify v1.8.4
 	github.com/valyala/fasthttp v1.48.0
-	golang.org/x/net v0.11.0
+	golang.org/x/net v0.12.0
 	mvdan.cc/gofumpt v0.5.0
 )
 
@@ -162,7 +163,6 @@ require (
 	github.com/ssgreg/nlreturn/v2 v2.2.1 // indirect
 	github.com/stbenjam/no-sprintf-host-port v0.1.1 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
-	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/t-yuki/gocover-cobertura v0.0.0-20180217150009-aaee18c8195c // indirect
 	github.com/tdakkota/asciicheck v0.2.0 // indirect
@@ -190,8 +190,8 @@ require (
 	golang.org/x/exp/typeparams v0.0.0-20230224173230-c95f2b4c22f2 // indirect
 	golang.org/x/mod v0.10.0 // indirect
 	golang.org/x/sync v0.2.0 // indirect
-	golang.org/x/sys v0.9.0 // indirect
-	golang.org/x/text v0.10.0 // indirect
+	golang.org/x/sys v0.10.0 // indirect
+	golang.org/x/text v0.11.0 // indirect
 	golang.org/x/tools v0.9.3 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
