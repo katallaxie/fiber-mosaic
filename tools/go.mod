@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/golang/mock v1.6.0
 	github.com/golangci/golangci-lint v1.53.3
-	github.com/goreleaser/goreleaser v1.19.1
+	github.com/goreleaser/goreleaser v1.19.2
 	gotest.tools/gotestsum v1.10.0
 	mvdan.cc/gofumpt v0.5.0
 )
