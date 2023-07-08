@@ -23,7 +23,7 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "lint": "eslint --fix src/**/*{.ts,.tsx}",
+    "lint": "eslint src/**/*{.ts,.tsx}",
     "generate": "stencil generate"
   },
   "dependencies": {

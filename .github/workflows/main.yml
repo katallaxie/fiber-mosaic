@@ -45,3 +45,24 @@ jobs:
           go-version-file: ./go.mod
           check-latest: true
       - run: make lint
+
+  test-component:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+    steps:
+    - uses: actions/checkout@v3
+    - uses: browser-actions/setup-chrome@v1
+    - uses: actions/setup-node@v3
+    - run: |
+        npm ci
+        npm test -w packages/component
+
+  lint-component:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: |
+          npm ci
+          npm lint -w packages/component
