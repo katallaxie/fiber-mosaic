@@ -1,7 +1,7 @@
-import { Config } from '@stencil/core';
+import { Config } from '@stencil/core'
 
 export const config: Config = {
-  namespace: 'fiber-mosaic',
+  namespace: 'my-fragment',
   outputTargets: [
     {
       type: 'dist',
@@ -19,6 +19,6 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
-};
+}
