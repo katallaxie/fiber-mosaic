@@ -1,0 +1,13 @@
+{
+    "name": "root",
+    "private": true,
+    "engines": {
+        "npm": "9.5.1",
+        "node": "19.8.1"
+    },
+    "version": "0.0.1",
+    "workspaces": [
+        "./packages/*"
+    ],
+    "dependencies": {}
+}

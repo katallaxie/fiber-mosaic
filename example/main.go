@@ -5,6 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/fiber/v2/middleware/monitor"
 	"github.com/gofiber/template/html/v2"
 )
 
@@ -19,6 +20,9 @@ func main() {
 
 	// Add logger
 	app.Use(logger.New())
+
+	// Add monitor
+	app.Get("/metrics", monitor.New())
 
 	app.Get("/index", fragments.Template(fragments.Config{}, "index", fiber.Map{}, "layouts/main"))
 

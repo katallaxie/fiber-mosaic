@@ -51,7 +51,7 @@ func (h *HtmlFragment) Fragments() (map[string]*Fragment, error) {
 	defer h.RUnlock()
 
 	scripts := h.doc.Find("head script[type=fragment]")
-	fragments := h.doc.Find("fragment").AddSelection(scripts)
+	fragments := h.doc.Find("my-fragment").AddSelection(scripts)
 
 	ff := make(map[string]*Fragment)
 
