@@ -69,4 +69,4 @@ jobs:
           node-version: 18
       - run: |
           npm ci
-          npm lint -w packages/component
+          npm run lint -w packages/component
