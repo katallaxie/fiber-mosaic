@@ -1,10 +1,13 @@
 import { Component, Prop, h } from '@stencil/core'
 
 @Component({
-  tag: 'my-fragment',
+  tag: 'app-fragment',
   shadow: true,
 })
-export class MyFragment {
+export class AppFragment {
+  /**
+   * If `true`, the fragment will be fetched in the browser.
+   */
   @Prop() deferred: boolean
 
   render() {

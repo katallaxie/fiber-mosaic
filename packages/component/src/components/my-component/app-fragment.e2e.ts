@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing'
-import { MyFragment } from './my-fragment'
+import { AppFragment } from './app-fragment'
 
 describe('my-component', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
-      components: [MyFragment],
-      html: '<my-fragment></my-fragment>',
+      components: [AppFragment],
+      html: '<app-fragment></app-fragment>',
     })
     expect(root).toEqualHtml(`
-      <my-fragment>
+      <app-fragment>
         <mock:shadow-root>
           <div>A new fragment</div>
         </mock:shadow-root>
-      </my-fragment>
+      </app-fragment>
     `)
   })
 })

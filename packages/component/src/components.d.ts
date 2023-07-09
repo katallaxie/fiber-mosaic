@@ -18,7 +18,7 @@ declare global {
         new (): HTMLMyFragmentElement;
     };
     interface HTMLElementTagNameMap {
-        "my-fragment": HTMLMyFragmentElement;
+        "app-fragment": HTMLMyFragmentElement;
     }
 }
 declare namespace LocalJSX {
@@ -26,14 +26,14 @@ declare namespace LocalJSX {
         "deferred"?: boolean;
     }
     interface IntrinsicElements {
-        "my-fragment": MyFragment;
+        "app-fragment": MyFragment;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-fragment": LocalJSX.MyFragment & JSXBase.HTMLAttributes<HTMLMyFragmentElement>;
+            "app-fragment": LocalJSX.MyFragment & JSXBase.HTMLAttributes<HTMLMyFragmentElement>;
         }
     }
 }

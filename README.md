@@ -7,16 +7,16 @@
 
 Mosaic middleware for [Fiber](https://github.com/gofiber/fiber) enables building microservices for the frontend.
 
-A `<my-fragment>` symbolizes a part of a template that can be served by a singular microservice. Thus, making a fragment the contract between different services and teams within a large engineering organization. The middleware concurrently fetches those parts from the service and replaces it in the template. It supports `GET` and `POST` [HTTP methods](https://developer.mozilla.org/de/docs/Web/HTTP/Methods) to fetcht the content. Related resources like CSS or JavaScript are injected via the [HTTP `LINK` entity header field](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link). A `<my-fragment>` can occure in the [`body` element](https://developer.mozilla.org/de/docs/Web/HTML/Element/body) or the [`header` element](https://developer.mozilla.org/de/docs/Web/HTML/Element/header). See [Example](#example) to learn more about using fragments.
+A `<app-fragment>` symbolizes a part of a template that can be served by a singular microservice. Thus, making a fragment the contract between different services and teams within a large engineering organization. The middleware concurrently fetches those parts from the service and replaces it in the template. It supports `GET` and `POST` [HTTP methods](https://developer.mozilla.org/de/docs/Web/HTTP/Methods) to fetcht the content. Related resources like CSS or JavaScript are injected via the [HTTP `LINK` entity header field](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link). A `<app-fragment>` can occure in the [`body` element](https://developer.mozilla.org/de/docs/Web/HTML/Element/body) or the [`header` element](https://developer.mozilla.org/de/docs/Web/HTML/Element/header). See [Example](#example) to learn more about using fragments.
 
-`my-fragment` is used to adhere to the [HTML spec](https://html.spec.whatwg.org/#valid-custom-element-name), the tag name must contain a dash ('-').
+`app-fragment` is used to adhere to the [HTML spec](https://html.spec.whatwg.org/#valid-custom-element-name), the tag name must contain a dash ('-').
 
 [Tailor](https://github.com/zalando/tailor) by Zalando is prior art for this middleware.
 [Fragements](https://github.com/github/fiber-fragments) by GitHub is prior art for this middleware created by @katallaxie.
 
 ## Fragement(s)
 
-A `my-fragment` will be hybrid-polymorphic (if this is a thing). On the server it is parsed and evaluate by the middleware. 🦄 In the browser it will be a web component that received data from the middleware (**this is still work in progress ⚠️**).
+A `app-fragment` will be hybrid-polymorphic (if this is a thing). On the server it is parsed and evaluate by the middleware. 🦄 In the browser it will be a web component that received data from the middleware (**this is still work in progress ⚠️**).
 
 ### Server
 
@@ -70,7 +70,7 @@ app.Listen(":8080")
 </head>
 <body>
     <h1>Example</h1>
-    <my-fragment src="fragment1.html"></my-fragment>
+    <app-fragment src="fragment1.html"></app-fragment>
 </body>
 </html>
 ```

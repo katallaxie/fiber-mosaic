@@ -1,5 +1,5 @@
 {
-  "name": "my-fragment",
+  "name": "app-fragment",
   "version": "v1.0.0-beta.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/my-fragment/my-fragment.esm.js",
+  "unpkg": "dist/app-fragment/app-fragment.esm.js",
   "files": [
     "dist/",
     "loader/"
