@@ -1,0 +1,39 @@
+{
+  "name": "app-fragment",
+  "description": "Webcomponent app-fragment following open-wc recommendations",
+  "license": "MIT",
+  "author": "app-fragment",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
+  "exports": {
+    ".": "./dist/src/index.js",
+    "./app-fragment.js": "./dist/src/app-fragment.js"
+  },
+  "scripts": {
+    "analyze": "cem analyze --litelement",
+    "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
+    "build": "tsc && npm run analyze -- --exclude dist",
+    "prepublish": "tsc && npm run analyze -- --exclude dist"
+  },
+  "dependencies": {
+    "lit": "^2.0.2"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.4.17",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@web/dev-server": "^0.1.34",
+    "concurrently": "^5.3.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^27.2.2",
+    "eslint-plugin-lit": "^1.8.3",
+    "eslint-plugin-prettier": "^5.0.0-alpha.1",
+    "prettier": "^3.0.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.2"
+  },
+  "customElements": "custom-elements.json"
+}
