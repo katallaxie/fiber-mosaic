@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/html/v2"
 )
@@ -21,6 +22,9 @@ func main() {
 
 	// Add compression
 	app.Use(compress.New())
+
+	// Add CORS
+	app.Use(cors.New())
 
 	app.Get("/fragment1", func(c *fiber.Ctx) error {
 		c.Links("https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css", "stylesheet")
