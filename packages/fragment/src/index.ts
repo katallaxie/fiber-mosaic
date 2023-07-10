@@ -1,1 +1,1 @@
-export { AppFragment } from './AppFragment.js';
+export { AppFragment } from './AppFragment.js'
