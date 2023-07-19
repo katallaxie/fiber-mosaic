@@ -28,11 +28,11 @@ type Config struct {
 
 	// FilterResponse defines a function to filter the responses
 	// from the fragment sources.
-	FilterResponse func(*fasthttp.Response) *fasthttp.Response
+	FilterResponse func(*fasthttp.Response)
 
 	// FilterRequest defines a function to filter the request
 	// to the fragment sources.
-	FilterRequest func(*fasthttp.Request) *fasthttp.Request
+	FilterRequest func(*fasthttp.Request)
 
 	// ErrorHandler defines a function which is executed
 	// It may be used to define a custom error.
@@ -123,6 +123,11 @@ func Template(config Config, name string, bind interface{}, layouts ...string) f
 // Do represents the core functionality of the middleware.
 // It resolves the fragments from a parsed template.
 func Do(c *fiber.Ctx, cfg Config, doc *Document) error {
+	// Filter request
+	if cfg.FilterRequest != nil {
+		cfg.FilterRequest(c.Request())
+	}
+
 	r := NewResolver()
 	statusCode, head, err := r.Resolve(c, cfg, doc.HtmlFragment())
 	if err != nil {
@@ -141,6 +146,11 @@ func Do(c *fiber.Ctx, cfg Config, doc *Document) error {
 	c.Response().SetStatusCode(statusCode)
 	c.Response().Header.SetContentType(fiber.MIMETextHTMLCharsetUTF8)
 	c.Response().SetBody([]byte(html))
+
+	// Filter response
+	if cfg.FilterResponse != nil {
+		cfg.FilterResponse(c.Response())
+	}
 
 	return nil
 }
@@ -169,18 +179,6 @@ func configDefault(config ...Config) Config {
 	if cfg.ErrorHandler == nil {
 		cfg.ErrorHandler = func(c *fiber.Ctx, err error) error {
 			return c.Status(fiber.StatusInternalServerError).SendString("cannot create response")
-		}
-	}
-
-	if cfg.FilterResponse == nil {
-		cfg.FilterResponse = func(res *fasthttp.Response) *fasthttp.Response {
-			return res
-		}
-	}
-
-	if cfg.FilterRequest == nil {
-		cfg.FilterRequest = func(req *fasthttp.Request) *fasthttp.Request {
-			return req
 		}
 	}
 
