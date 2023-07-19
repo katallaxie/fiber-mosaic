@@ -66,6 +66,13 @@ func Template(config Config, name string, bind interface{}, layouts ...string) f
 			return c.Next()
 		}
 
+		method := c.Method()
+
+		// We only handle GET and HEAD requests
+		if method != fiber.MethodGet && method != fiber.MethodHead {
+			return c.Next()
+		}
+
 		var err error
 		var buf *bytes.Buffer = new(bytes.Buffer)
 
