@@ -162,9 +162,7 @@ func readContent(rf io.ReaderFrom, name string) (n int64, err error) {
 	if err != nil {
 		return 0, err
 	}
-	defer func() {
-		err = f.Close()
-	}()
+	defer func() { err = f.Close() }()
 	return rf.ReadFrom(f)
 }
 
