@@ -8,12 +8,8 @@
   },
   "version": "0.3.0",
   "type": "module",
-  "main": "dist/src/index.js",
-  "module": "dist/src/index.js",
-  "exports": {
-    ".": "./dist/src/index.js",
-    "./app-fragment.js": "./dist/src/app-fragment.js"
-  },
+  "main": "app-fragment.js",
+  "module": "app-fragment.js",
   "scripts": {
     "analyze": "cem analyze --litelement",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
@@ -29,6 +25,13 @@
   "dependencies": {
     "lit": "^2.2.4"
   },
+  "keywords": [
+    "web-components",
+    "lit-element",
+    "typescript",
+    "lit",
+    "fragment"
+  ],
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
