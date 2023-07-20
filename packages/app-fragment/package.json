@@ -6,7 +6,7 @@
     "name": "Sebastian Doell (@katallaxie)",
     "email": "sebastian@katallaxie.dev"
   },
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "main": "app-fragment.js",
   "module": "app-fragment.js",
