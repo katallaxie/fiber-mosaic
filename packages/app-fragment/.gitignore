@@ -294,7 +294,7 @@ fabric.properties
 .idea/**/azureSettings.xml
 
 # App Fragment
-app-fragment.*
+/app-fragment.*
 storybook-static
 custom-elements.json
 

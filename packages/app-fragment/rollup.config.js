@@ -2,13 +2,21 @@ import summary from 'rollup-plugin-summary'
 import { terser } from 'rollup-plugin-terser'
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
+import pkg from './package.json'
 
 export default {
-  input: 'dist/src/app-fragment.js',
-  output: {
-    file: 'app-fragment.js',
-    format: 'esm',
-  },
+  input: 'app-fragment.js',
+  output: [
+    {
+      name: 'app-fragment',
+      file: pkg.browser,
+      format: 'umd',
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+    },
+  ],
   onwarn(warning) {
     if (warning.code !== 'THIS_IS_UNDEFINED') {
       console.error(`(!) ${warning.message}`)
