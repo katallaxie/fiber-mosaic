@@ -6,7 +6,7 @@ import replace from '@rollup/plugin-replace'
 export default {
   input: 'dist/src/app-fragment.js',
   output: {
-    file: 'app-fragment.bundled.js',
+    file: 'app-fragment.js',
     format: 'esm',
   },
   onwarn(warning) {

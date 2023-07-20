@@ -18,6 +18,7 @@
     "analyze": "cem analyze --litelement",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "build": "tsc && npm run analyze -- --exclude dist",
+    "docs:gen": "eleventy --config=.eleventy.cjs",
     "docs:build": "rollup -c --file docs/my-element.bundled.js",
     "prepublish": "tsc && npm run analyze -- --exclude dist",
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -29,6 +30,8 @@
     "lit": "^2.2.4"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@custom-elements-manifest/analyzer": "^0.8.3",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-replace": "^5.0.2",
