@@ -6,7 +6,7 @@
     "name": "Sebastian Doell (@katallaxie)",
     "email": "sebastian@katallaxie.dev"
   },
-  "version": "0.4.4",
+  "version": "0.4.5",
   "type": "module",
   "main": "app-fragment.esm.min.js",
   "browser": "app-fragment.umd.min.js",
@@ -24,7 +24,10 @@
     "checksize": "rollup -c ; cat app-fragment.bundled.js | gzip -9 | wc -c ; rm app-fragment.bundled.js"
   },
   "dependencies": {
-    "lit": "^2.2.4"
+    "lit": "^3.0.0-pre.0",
+    "lit-html": "^3.0.0-pre.0",
+    "lit-element": "^4.0.0-pre.0",
+    "@lit/reactive-element": "^2.0.0-pre.0"
   },
   "keywords": [
     "web-components",

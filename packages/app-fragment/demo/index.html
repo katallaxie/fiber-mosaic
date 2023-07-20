@@ -13,11 +13,11 @@
 
   <script type="module">
     import { html, render } from 'lit';
-    import '../dist/src/app-fragment.js';
+    import '../app-fragment.js';
     
     render(
       html`
-        <app-fragment deferred src="http://localhost:3000/fragment1">
+        <app-fragment deferred='true' src="http://localhost:3000/fragment1">
           some light-dom
         </app-fragment>
       `,

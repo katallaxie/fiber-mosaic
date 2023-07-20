@@ -1,8 +1,8 @@
 import { html, LitElement } from 'lit'
-import { property, state } from 'lit/decorators.js'
-import { until } from 'lit/directives/until.js'
+import { property, customElement, state } from 'lit/decorators.js'
 import { unsafeHTML } from 'lit/directives/unsafe-html.js'
 
+@customElement('app-fragment')
 export class AppFragment extends LitElement {
   /**
    * If true, the fragment will be loaded only when it is visible.
@@ -10,7 +10,8 @@ export class AppFragment extends LitElement {
    * @type {boolean}
    * @default false
    */
-  @property({ type: Boolean }) deferred = false
+  @property()
+  deferred: boolean = false
 
   /**
    * The URL of the fragment.
@@ -18,7 +19,17 @@ export class AppFragment extends LitElement {
    * @type {string}
    * @default ''
    */
-  @property({ type: String }) src = ''
+  @property()
+  src: string = ''
+
+  /**
+   * The content of the fragment.
+   * @attr content
+   * @type {string}
+   * @default ''
+   */
+  @state()
+  protected content = ''
 
   /**
    * The HTTP method to use when fetching the fragment.
@@ -29,12 +40,35 @@ export class AppFragment extends LitElement {
    * @see https://fetch.spec.whatwg.org/#methods
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Request/method
    */
-  @property({ type: String }) method = 'GET'
+  @property()
+  method = 'GET'
 
-  @state()
-  private content = fetch(this.src)
-    .then(r => r.text())
-    .then(h => html`<div>${unsafeHTML(h)}</div>`)
+  /**
+   * Loads the fragment.
+   * @returns {Promise<void>}
+   * @private
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Request
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Response
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Body
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Body/text
+   */
+  async load() {
+    const response = await fetch(this.src, { method: this.method })
+    const html = await response.text()
+    this.content = html
+  }
+
+  /**
+   * Lifecycle method that is called when the element is first updated.
+   * @returns {Promise<void>}
+   * @protected
+   * @see https://lit.dev/docs/components/lifecycle/#update
+   */
+  async connectedCallback() {
+    super.connectedCallback()
+    await this.load()
+  }
 
   /**
    * Renders the fragment.
@@ -44,8 +78,6 @@ export class AppFragment extends LitElement {
   render() {
     if (!this.deferred) return html`<slot></slot>`
 
-    return html`${until(this.content, html`<slot></slot>`)}`
+    return html`<div>${unsafeHTML(this.content)}</div>`
   }
 }
-
-window.customElements.define('app-fragment', AppFragment)
