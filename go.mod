@@ -10,7 +10,7 @@ require (
 	github.com/golangci/golangci-lint v1.54.2
 	github.com/google/uuid v1.3.1
 	github.com/stretchr/testify v1.8.4
-	github.com/valyala/fasthttp v1.48.0
+	github.com/valyala/fasthttp v1.49.0
 	golang.org/x/net v0.14.0
 	mvdan.cc/gofumpt v0.5.0
 )
