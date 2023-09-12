@@ -18,7 +18,7 @@ jobs:
     permissions:
       checks: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-go@v4
       with:
         go-version-file: ./go.mod
@@ -39,7 +39,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
         with:
           go-version-file: ./go.mod
@@ -51,7 +51,7 @@ jobs:
     permissions:
       checks: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: browser-actions/setup-chrome@v1
     - uses: actions/setup-node@v3
       with:
@@ -63,7 +63,7 @@ jobs:
   lint-component:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: 18
