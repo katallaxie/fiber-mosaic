@@ -6,7 +6,7 @@
     "name": "Sebastian Doell (@katallaxie)",
     "email": "sebastian@katallaxie.dev"
   },
-  "version": "0.4.5",
+  "version": "0.4.6",
   "type": "module",
   "main": "app-fragment.esm.min.js",
   "browser": "app-fragment.umd.min.js",
