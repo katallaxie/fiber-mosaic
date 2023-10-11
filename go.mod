@@ -11,7 +11,7 @@ require (
 	github.com/google/uuid v1.3.1
 	github.com/stretchr/testify v1.8.4
 	github.com/valyala/fasthttp v1.50.0
-	golang.org/x/net v0.16.0
+	golang.org/x/net v0.17.0
 	mvdan.cc/gofumpt v0.5.0
 )
 
