@@ -24,9 +24,9 @@
     "checksize": "rollup -c ; cat app-fragment.bundled.js | gzip -9 | wc -c ; rm app-fragment.bundled.js"
   },
   "dependencies": {
-    "lit": "^3.0.0",
+    "lit": "^3.0.1",
     "lit-html": "^3.0.0",
-    "lit-element": "^4.0.0",
+    "lit-element": "^4.0.1",
     "@lit/reactive-element": "^2.0.0-pre.1"
   },
   "keywords": [
@@ -39,18 +39,18 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@custom-elements-manifest/analyzer": "^0.8.4",
+    "@custom-elements-manifest/analyzer": "^0.9.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-replace": "^5.0.3",
-    "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "@typescript-eslint/parser": "^6.7.5",
+    "@rollup/plugin-replace": "^5.0.4",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
     "@web/dev-server": "^0.3.3",
-    "concurrently": "^8.2.1",
+    "concurrently": "^8.2.2",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-jest": "^27.4.2",
-    "eslint-plugin-lit": "^1.9.1",
+    "eslint-plugin-jest": "^27.6.0",
+    "eslint-plugin-lit": "^1.10.1",
     "eslint-plugin-prettier": "^5.0.1",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "prettier": "^3.0.3",
     "rollup-plugin-summary": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
