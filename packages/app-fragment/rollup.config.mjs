@@ -2,7 +2,7 @@ import summary from 'rollup-plugin-summary'
 import { terser } from 'rollup-plugin-terser'
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
-import pkg from './package.json'
+import pkg from './load-package.cjs'
 
 export default {
   input: 'app-fragment.js',

@@ -21,7 +21,8 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "eslint --ext .js,.ts,.cjs .",
     "fix": "npm run lint -- --fix",
-    "checksize": "rollup -c ; cat app-fragment.bundled.js | gzip -9 | wc -c ; rm app-fragment.bundled.js"
+    "checksize": "rollup -c ; cat app-fragment.bundled.js | gzip -9 | wc -c ; rm app-fragment.bundled.js",
+    "clean": "rm -rf node_modules"
   },
   "dependencies": {
     "lit": "^3.0.1",
