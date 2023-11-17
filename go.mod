@@ -10,7 +10,7 @@ require (
 	github.com/golangci/golangci-lint v1.55.2
 	github.com/google/uuid v1.4.0
 	github.com/stretchr/testify v1.8.4
-	github.com/valyala/fasthttp v1.50.0
+	github.com/valyala/fasthttp v1.51.0
 	golang.org/x/net v0.18.0
 	mvdan.cc/gofumpt v0.5.0
 )
@@ -103,7 +103,7 @@ require (
 	github.com/kisielk/errcheck v1.6.3 // indirect
 	github.com/kisielk/gotool v1.0.0 // indirect
 	github.com/kkHAIKE/contextcheck v1.1.4 // indirect
-	github.com/klauspost/compress v1.16.7 // indirect
+	github.com/klauspost/compress v1.17.0 // indirect
 	github.com/kulti/thelper v0.6.3 // indirect
 	github.com/kunwardeep/paralleltest v1.0.8 // indirect
 	github.com/kyoh86/exportloopref v0.1.11 // indirect
