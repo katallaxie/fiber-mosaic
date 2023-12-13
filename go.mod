@@ -8,7 +8,7 @@ require (
 	github.com/gofiber/template/html/v2 v2.0.5
 	github.com/golang/mock v1.6.0
 	github.com/golangci/golangci-lint v1.55.2
-	github.com/google/uuid v1.4.0
+	github.com/google/uuid v1.5.0
 	github.com/stretchr/testify v1.8.4
 	github.com/valyala/fasthttp v1.51.0
 	golang.org/x/net v0.19.0
