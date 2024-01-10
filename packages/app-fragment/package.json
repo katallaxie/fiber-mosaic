@@ -28,7 +28,7 @@
     "lit": "^3.1.0",
     "lit-html": "^3.1.0",
     "lit-element": "^4.0.2",
-    "@lit/reactive-element": "^2.0.2"
+    "@lit/reactive-element": "^2.0.3"
   },
   "keywords": [
     "web-components",
