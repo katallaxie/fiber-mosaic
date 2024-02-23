@@ -3,7 +3,7 @@ module github.com/katallaxie/fiber-mosaic
 go 1.21
 
 require (
-	github.com/PuerkitoBio/goquery v1.8.1
+	github.com/PuerkitoBio/goquery v1.9.0
 	github.com/gofiber/fiber/v2 v2.51.0
 	github.com/gofiber/template/html/v2 v2.1.0
 	github.com/golang/mock v1.6.0
@@ -33,7 +33,7 @@ require (
 	github.com/alexkohler/prealloc v1.0.0 // indirect
 	github.com/alingse/asasalint v0.0.11 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
-	github.com/andybalholm/cascadia v1.3.1 // indirect
+	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/ashanbrown/forbidigo v1.6.0 // indirect
 	github.com/ashanbrown/makezero v1.1.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
