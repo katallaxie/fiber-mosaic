@@ -3,7 +3,7 @@ module github.com/katallaxie/fiber-mosaic
 go 1.21
 
 require (
-	github.com/PuerkitoBio/goquery v1.9.0
+	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/gofiber/fiber/v2 v2.52.4
 	github.com/gofiber/template/html/v2 v2.1.0
 	github.com/golang/mock v1.6.0
