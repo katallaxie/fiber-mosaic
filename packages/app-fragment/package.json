@@ -48,7 +48,7 @@
     "@web/dev-server": "^0.4.1",
     "concurrently": "^8.2.2",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-jest": "^27.6.0",
+    "eslint-plugin-jest": "^28.6.0",
     "eslint-plugin-lit": "^1.11.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint": "^8.56.0",
