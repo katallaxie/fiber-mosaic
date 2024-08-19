@@ -1,6 +1,7 @@
 module github.com/katallaxie/fiber-mosaic
 
 go 1.21
+toolchain go1.22.5
 
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
@@ -12,7 +13,7 @@ require (
 	github.com/stretchr/testify v1.9.0
 	github.com/valyala/fasthttp v1.54.0
 	golang.org/x/net v0.27.0
-	mvdan.cc/gofumpt v0.6.0
+	mvdan.cc/gofumpt v0.7.0
 )
 
 require (
