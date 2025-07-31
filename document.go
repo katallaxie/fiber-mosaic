@@ -11,7 +11,7 @@ import (
 // Document ...
 type Document struct {
 	doc        *goquery.Document
-	html       *HtmlFragment
+	html       *HTMLFragment
 	statusCode int
 
 	sync.RWMutex
@@ -23,7 +23,7 @@ func NewDocument(root *html.Node) (*Document, error) {
 	// set the default status code
 	d.statusCode = fiber.StatusOK
 
-	html, err := NewHtmlFragment(root)
+	html, err := NewHTMLFragment(root)
 	if err != nil {
 		return nil, err
 	}
@@ -32,12 +32,12 @@ func NewDocument(root *html.Node) (*Document, error) {
 	return d, nil
 }
 
-// Html is returning the final HTML output.
-func (d *Document) Html() (string, error) {
+// HTML is returning the final HTML output.
+func (d *Document) HTML() (string, error) {
 	d.RLock()
 	defer d.RUnlock()
 
-	html, err := d.html.Html()
+	html, err := d.html.HTML()
 	if err != nil {
 		return "", err
 	}
@@ -56,7 +56,7 @@ func (d *Document) Fragments() ([]*Fragment, error) {
 
 	ff := make([]*Fragment, 0, fragments.Length())
 
-	fragments.Each(func(i int, s *goquery.Selection) {
+	fragments.Each(func(_ int, s *goquery.Selection) {
 		f := FromSelection(s)
 
 		if !f.deferred {
@@ -67,9 +67,8 @@ func (d *Document) Fragments() ([]*Fragment, error) {
 	return ff, nil
 }
 
-// Fragments is returning the selection of fragments
-// from an HTML page.
-func (d *Document) HtmlFragment() *HtmlFragment {
+// HTMLFragment returns embedded fragments of HTML.
+func (d *Document) HTMLFragment() *HTMLFragment {
 	d.RLock()
 	defer d.RUnlock()
 

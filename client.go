@@ -21,7 +21,7 @@ func NewClient(opts ...ClientOpt) *http.Client {
 		Timeout:   10 * time.Second,
 		Transport: tr,
 		// do not follow redirects
-		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+		CheckRedirect: func(_ *http.Request, _ []*http.Request) error {
 			return http.ErrUseLastResponse
 		},
 	}

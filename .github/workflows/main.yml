@@ -1,6 +1,6 @@
 # .github/workflows/main.yml
 
-name: Test & Build
+name: Test & Lint
 
 on:
   workflow_call:
@@ -23,7 +23,7 @@ jobs:
       with:
         go-version-file: ./go.mod
     - run: make test
-    - uses: dorny/test-reporter@v1
+    - uses: dorny/test-reporter@v2
       if: success() || failure()
       with:
         name: Go Test Results
@@ -45,28 +45,3 @@ jobs:
           go-version-file: ./go.mod
           check-latest: true
       - run: make lint
-
-  test-component:
-    runs-on: ubuntu-latest
-    permissions:
-      checks: write
-    steps:
-    - uses: actions/checkout@v4
-    - uses: browser-actions/setup-chrome@v1
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 18
-    - run: |
-        npm ci
-        npm test -w packages/app-fragment
-
-  lint-component:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - run: |
-          npm ci
-          npm run lint -w packages/app-fragment

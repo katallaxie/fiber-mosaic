@@ -17,7 +17,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-// DefaultClient is the default http client used
+// DefaultClient is the default http client used.
 var DefaultClient = NewClient()
 
 // Config ...
@@ -55,7 +55,8 @@ type Config struct {
 }
 
 // Template is a middleware for templating.
-// nolint:gocyclo
+//
+//nolint:gocyclo
 func Template(config Config, name string, bind interface{}, layouts ...string) fiber.Handler {
 	// Set default config
 	cfg := configDefault(config)
@@ -74,7 +75,22 @@ func Template(config Config, name string, bind interface{}, layouts ...string) f
 		}
 
 		var err error
-		var buf *bytes.Buffer = new(bytes.Buffer)
+		buf := new(bytes.Buffer)
+
+		// Render raw template using 'name' as filepath if no engine is set
+		var tmpl *template.Template
+		if _, err = readContent(buf, name); err != nil {
+			return cfg.ErrorHandler(c, err)
+		}
+		// Parse template
+		if tmpl, err = template.New("").Parse(buf.String()); err != nil {
+			return cfg.ErrorHandler(c, err)
+		}
+		buf.Reset()
+		// Render template
+		if err = tmpl.Execute(buf, bind); err != nil {
+			return cfg.ErrorHandler(c, err)
+		}
 
 		if c.App().Config().Views != nil {
 			// Render template based on global layout if exists
@@ -85,21 +101,6 @@ func Template(config Config, name string, bind interface{}, layouts ...string) f
 			}
 			// Render template from Views
 			if err := c.App().Config().Views.Render(buf, name, bind, layouts...); err != nil {
-				return cfg.ErrorHandler(c, err)
-			}
-		} else {
-			// Render raw template using 'name' as filepath if no engine is set
-			var tmpl *template.Template
-			if _, err = readContent(buf, name); err != nil {
-				return cfg.ErrorHandler(c, err)
-			}
-			// Parse template
-			if tmpl, err = template.New("").Parse(buf.String()); err != nil {
-				return cfg.ErrorHandler(c, err)
-			}
-			buf.Reset()
-			// Render template
-			if err = tmpl.Execute(buf, bind); err != nil {
 				return cfg.ErrorHandler(c, err)
 			}
 		}
@@ -129,16 +130,16 @@ func Do(c *fiber.Ctx, cfg Config, doc *Document) error {
 	}
 
 	r := NewResolver()
-	statusCode, head, err := r.Resolve(c, cfg, doc.HtmlFragment())
+	statusCode, head, err := r.Resolve(c, cfg, doc.HTMLFragment())
 	if err != nil {
 		return err
 	}
 
 	// get final output
-	f := doc.HtmlFragment()
+	f := doc.HTMLFragment()
 	f.AppendHead(cfg.FilterHead(head)...)
 
-	html, err := f.Html()
+	html, err := f.HTML()
 	if err != nil {
 		return cfg.ErrorHandler(c, err)
 	}
@@ -155,7 +156,7 @@ func Do(c *fiber.Ctx, cfg Config, doc *Document) error {
 	return nil
 }
 
-// readContent opens a named file and read content from it
+// readContent opens a named file and read content from it.
 func readContent(rf io.ReaderFrom, name string) (n int64, err error) {
 	// Read file
 	f, err := os.Open(filepath.Clean(name))
@@ -166,7 +167,7 @@ func readContent(rf io.ReaderFrom, name string) (n int64, err error) {
 	return rf.ReadFrom(f)
 }
 
-// Helper function to set default values
+// Helper function to set default values.
 func configDefault(config ...Config) Config {
 	// Init config
 	var cfg Config
@@ -175,7 +176,7 @@ func configDefault(config ...Config) Config {
 	}
 
 	if cfg.ErrorHandler == nil {
-		cfg.ErrorHandler = func(c *fiber.Ctx, err error) error {
+		cfg.ErrorHandler = func(c *fiber.Ctx, _ error) error {
 			return c.Status(fiber.StatusInternalServerError).SendString("cannot create response")
 		}
 	}

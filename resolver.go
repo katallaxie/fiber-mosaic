@@ -21,8 +21,9 @@ func NewResolver() *Resolver {
 type ResolverFunc func(c *fiber.Ctx, cfg Config) error
 
 // Resolve blocks until all fragments have been called.
-// nolint:gocyclo
-func (r *Resolver) Resolve(c *fiber.Ctx, cfg Config, doc *HtmlFragment) (int, []*html.Node, error) {
+//
+//nolint:gocyclo
+func (r *Resolver) Resolve(c *fiber.Ctx, cfg Config, doc *HTMLFragment) (int, []*html.Node, error) {
 	statusCode := fiber.StatusOK
 	head := make([]*html.Node, 0)
 
@@ -42,7 +43,7 @@ func (r *Resolver) Resolve(c *fiber.Ctx, cfg Config, doc *HtmlFragment) (int, []
 			statusCode = f.statusCode
 		}
 
-		fw, err := f.HtmlFragment().Fragments()
+		fw, err := f.HTMLFragment().Fragments()
 		if err != nil {
 			return statusCode, head, err
 		}
@@ -57,7 +58,7 @@ func (r *Resolver) Resolve(c *fiber.Ctx, cfg Config, doc *HtmlFragment) (int, []
 				continue
 			}
 
-			html, err := ref.HtmlFragment().Html()
+			html, err := ref.HTMLFragment().HTML()
 			if err != nil {
 				return statusCode, head, err
 			}
@@ -65,7 +66,7 @@ func (r *Resolver) Resolve(c *fiber.Ctx, cfg Config, doc *HtmlFragment) (int, []
 			fwr.Element().ReplaceWithHtml(html)
 		}
 
-		html, err := f.HtmlFragment().Html()
+		html, err := f.HTMLFragment().HTML()
 		if err != nil {
 			return statusCode, head, err
 		}

@@ -27,7 +27,6 @@ func (s Header) Links() []Link {
 	links := make([]Link, 0)
 
 	for _, chunk := range strings.Split(string(s), ",") {
-
 		l := Link{URL: "", Rel: "", Params: make(map[string]string)}
 
 		for _, part := range strings.Split(chunk, ";") {

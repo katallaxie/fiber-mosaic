@@ -24,15 +24,15 @@ const (
 	HTTPLinkHeader = "Link"
 )
 
-// HtmlFragment is representation of HTML fragments.
-type HtmlFragment struct {
+// HTMLFragment is representation of HTML fragments.
+type HTMLFragment struct {
 	doc *goquery.Document
 	sync.RWMutex
 }
 
-// NewHtmlFragment creates a new fragment of HTML.
-func NewHtmlFragment(root *html.Node) (*HtmlFragment, error) {
-	h := new(HtmlFragment)
+// NewHTMLFragment creates a new fragment of HTML.
+func NewHTMLFragment(root *html.Node) (*HTMLFragment, error) {
+	h := new(HTMLFragment)
 	h.doc = goquery.NewDocumentFromNode(root)
 
 	return h, nil
@@ -40,13 +40,13 @@ func NewHtmlFragment(root *html.Node) (*HtmlFragment, error) {
 
 // Document get the full document representation
 // of the HTML fragment.
-func (h *HtmlFragment) Fragment() *goquery.Document {
+func (h *HTMLFragment) Fragment() *goquery.Document {
 	return h.doc
 }
 
 // Fragments is returning the selection of fragments
 // from an HTML page.
-func (h *HtmlFragment) Fragments() (map[string]*Fragment, error) {
+func (h *HTMLFragment) Fragments() (map[string]*Fragment, error) {
 	h.RLock()
 	defer h.RUnlock()
 
@@ -55,7 +55,7 @@ func (h *HtmlFragment) Fragments() (map[string]*Fragment, error) {
 
 	ff := make(map[string]*Fragment)
 
-	fragments.Each(func(i int, s *goquery.Selection) {
+	fragments.Each(func(_ int, s *goquery.Selection) {
 		f := FromSelection(s)
 
 		if !f.deferred {
@@ -66,8 +66,8 @@ func (h *HtmlFragment) Fragments() (map[string]*Fragment, error) {
 	return ff, nil
 }
 
-// Html creates the HTML output of the created document.
-func (h *HtmlFragment) Html() (string, error) {
+// HTML creates the HTML output of the created document.
+func (h *HTMLFragment) HTML() (string, error) {
 	h.RLock()
 	defer h.RUnlock()
 
@@ -80,8 +80,8 @@ func (h *HtmlFragment) Html() (string, error) {
 }
 
 // AppendHead ...
-func (d *HtmlFragment) AppendHead(ns ...*html.Node) {
-	head := d.doc.Find("head")
+func (h *HTMLFragment) AppendHead(ns ...*html.Node) {
+	head := h.doc.Find("head")
 	head.AppendNodes(ns...)
 }
 
@@ -101,7 +101,7 @@ type Fragment struct {
 	statusCode int
 	head       []*html.Node
 
-	f *HtmlFragment
+	f *HTMLFragment
 	s *goquery.Selection
 }
 
@@ -189,18 +189,18 @@ func (f *Fragment) Links() []*html.Node {
 	return f.head
 }
 
-// Ref represents the reference to another fragment
+// Ref represents the reference to another fragment.
 func (f *Fragment) Ref() string {
 	return f.ref
 }
 
-// ID represents a unique id for the fragment
+// ID represents a unique id for the fragment.
 func (f *Fragment) ID() string {
 	return f.id
 }
 
-// HtmlFragment returns embedded fragments of HTML.
-func (f *Fragment) HtmlFragment() *HtmlFragment {
+// HTMLFragment returns embedded fragments of HTML.
+func (f *Fragment) HTMLFragment() *HTMLFragment {
 	return f.f
 }
 
@@ -278,7 +278,7 @@ func (f *Fragment) do(c *fiber.Ctx, cfg Config, src string) error {
 		root.AppendChild(n)
 	}
 
-	doc, err := NewHtmlFragment(root)
+	doc, err := NewHTMLFragment(root)
 	if err != nil {
 		return err
 	}
