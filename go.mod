@@ -14,7 +14,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.52.9
 	github.com/gofiber/template/html/v2 v2.1.3
 	github.com/google/uuid v1.6.0
-	github.com/stretchr/testify v1.11.0
+	github.com/stretchr/testify v1.11.1
 	github.com/valyala/fasthttp v1.65.0
 	golang.org/x/net v0.43.0
 )
