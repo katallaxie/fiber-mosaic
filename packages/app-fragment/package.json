@@ -58,7 +58,7 @@
     "rollup": "^3.29.4",
     "tslib": "^2.6.2",
     
-    "typescript": "^5.3.3"
+    "typescript": "^5.9.2"
   },
   "customElements": "custom-elements.json"
 }
