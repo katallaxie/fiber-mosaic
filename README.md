@@ -7,6 +7,14 @@
 
 Mosaic middleware for [Fiber](https://github.com/gofiber/fiber) enables building microservices for the frontend.
 
+## 🛸 Installation
+
+```bash
+go get github.com/katallaxie/fiber-mosaic/v3
+```
+
+## Usage
+
 A `<app-fragment>` symbolizes a part of a template that can be served by a singular microservice. Thus, making a fragment the contract between different services and teams within a large engineering organization. The middleware concurrently fetches those parts from the service and replaces it in the template. It supports `GET` and `POST` [HTTP methods](https://developer.mozilla.org/de/docs/Web/HTTP/Methods) to fetcht the content. Related resources like CSS or JavaScript are injected via the [HTTP `LINK` entity header field](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link). A `<app-fragment>` can occure in the [`body` element](https://developer.mozilla.org/de/docs/Web/HTML/Element/body) or the [`header` element](https://developer.mozilla.org/de/docs/Web/HTML/Element/header). See [Example](#example) to learn more about using fragments.
 
 `app-fragment` is used to adhere to the [HTML spec](https://html.spec.whatwg.org/#valid-custom-element-name), the tag name must contain a dash ('-').
