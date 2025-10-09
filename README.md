@@ -46,10 +46,10 @@ Import the middleware package this is part of the Fiber web framework.
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html/v2"
+	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/template/html/v3"
 
-	"github.com/katallaxie/fiber-mosaic"
+	"github.com/katallaxie/fiber-mosaic/v3"
 )
 ```
 
