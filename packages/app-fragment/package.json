@@ -46,7 +46,7 @@
     "@typescript-eslint/eslint-plugin": "^8.60.0",
     "@typescript-eslint/parser": "^8.39.1",
     "@web/dev-server": "^0.4.6",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jest": "^29.15.2",
     "eslint-plugin-lit": "^2.3.1",
